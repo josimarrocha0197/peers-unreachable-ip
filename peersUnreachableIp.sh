@@ -3,7 +3,7 @@
 
 logDir="/var/log/asterisk/messages"
 
-for ramal in $(cat ${logDir} | grep -i unreach | awk -F "'" '{ print $2 }')
+for ramal in $(grep -i unreach ${logDir} | awk -F "'" '{ print $2 }')
 do
         echo Ramal ${ramal}
         asterisk -rx 'sip show peers' | grep ${ramal}
